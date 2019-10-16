@@ -1,0 +1,9 @@
+<p>character-overview works!</p>
+<div>
+  <ul>
+    <li *ngFor="let character of characters!.data!.results">
+      <p>{{character.name}}</p>
+      <img class="character-thumbnail" src="{{character.thumbnail.path+'.'+character.thumbnail.extension}}">
+    </li>
+  </ul>
+</div>
