@@ -9,15 +9,17 @@ import {Characters} from '../models/character';
 })
 export class CharacterOverviewComponent implements OnInit {
   characters: Characters;
+  pageNumber = 1;
 
   constructor(private marvelComicService: MarvelComicsService) {
   }
 
   ngOnInit() {
-    this.getCharacters(10, 0);
+    this.getCharacters(1, '10', '0');
   }
 
-  getCharacters = (pageSize?, pageOffset?) => {
+  getCharacters = (pageNumber: number, pageSize?: string, pageOffset?: string) => {
+    this.pageNumber = pageNumber;
     return this.marvelComicService.getCharacters(pageSize, pageOffset).subscribe(this.setCharacters);
   };
 
