@@ -1,7 +1,10 @@
-export class Character {
+export class Creator {
   id: number;
-  name: string;
-  description: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  suffix: string;
+  fullName: string;
   modified: Date;
   resourceURI: string;
   urls: [
@@ -14,7 +17,7 @@ export class Character {
     path: string;
     extension: string
   };
-  comics: {
+  series: {
     available: number;
     returned: number;
     collectionURI: string;
@@ -37,7 +40,7 @@ export class Character {
       }
     ]
   };
-  events: {
+  comics: {
     available: number;
     returned: number;
     collectionURI: string;
@@ -48,7 +51,7 @@ export class Character {
       }
     ]
   };
-  series: {
+  events: {
     available: number;
     returned: number;
     collectionURI: string;

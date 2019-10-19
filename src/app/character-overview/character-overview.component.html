@@ -1,12 +1,23 @@
 <h1>Character Overview</h1>
 <div>
   <ul *ngIf="characters">
-    <li *ngFor="let character of characters!.data!.results |
-    paginate: {itemsPerPage: 10, currentPage: pageNumber, totalItems: characters.data.total}">
+    <li *ngFor="let character of characters |
+    paginate: {itemsPerPage: 10, currentPage: pageNumber, totalItems: totalPages}">
       <p>{{character.name}}</p>
       <img class="character-thumbnail" src="{{character.thumbnail.path+'.'+character.thumbnail.extension}}">
+      <button (click)="getComicsForCharacter(character.name, character.comics.collectionURI)">Get Comics</button>
     </li>
   </ul>
+  <div *ngIf="comics!.length">
+    <h2>{{characterNameForComicsOnScope+ '\'s comics'}}</h2>
+    <div *ngFor="let comic of comics">
+      <p>{{comic.title}}</p>
+      <img src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}" alt="">
+      <p>{{comic.description}}</p>
+    </div>
+  </div>
 </div>
+
+
 
 <pagination-controls (pageChange)="getCharacters($event,'10', ($event === 1 ? $event - 1 : ($event -1 ) * 10).toString())"></pagination-controls>

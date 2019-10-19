@@ -1,8 +1,7 @@
-export class Character {
+export class Story {
   id: number;
-  name: string;
+  title: string;
   description: string;
-  modified: Date;
   resourceURI: string;
   urls: [
     {
@@ -10,6 +9,10 @@ export class Character {
       url: string
     }
   ];
+  startYear: number;
+  endYear: number;
+  rating: string;
+  modified: Date;
   thumbnail: {
     path: string;
     extension: string
@@ -48,15 +51,36 @@ export class Character {
       }
     ]
   };
-  series: {
+  characters: {
     available: number;
     returned: number;
     collectionURI: string;
     items: [
       {
         resourceURI: string;
-        name: string
+        name: string;
+        role: string
       }
     ]
+  };
+  creators: {
+    available: number;
+    returned: number;
+    collectionURI: string;
+    items: [
+      {
+        resourceURI: string;
+        name: string;
+        role: string
+      }
+    ]
+  };
+  next: {
+    resourceURI: string;
+    name: string
+  };
+  previous: {
+    resourceURI: string;
+    name: string
   };
 }

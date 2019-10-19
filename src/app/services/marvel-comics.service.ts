@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {Characters} from '../models/character';
+import {CharacterCollection} from '../models/character-collection';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class MarvelComicsService {
   constructor(private http: HttpClient) {
   }
 
-  getCharacters = (pageSize?: string, pageOffset?: string): Observable<any> => {
+  getCharacters = (pageSize?: string, pageOffset?: string): Observable<CharacterCollection> => {
     const options = {
       params: {
         ...(pageSize ? {limit: pageSize} : {}),
@@ -21,6 +21,15 @@ export class MarvelComicsService {
         apikey: environment.API_KEY
       },
     };
-    return this.http.get(`${this.apiUrl}/v1/public/characters`, options);
+    return this.http.get(`${this.apiUrl}/v1/public/characters`, options) as Observable<CharacterCollection>;
+  };
+
+  getResource<T>(url): Observable<T> {
+    const options = {
+      params: {
+        apikey: environment.API_KEY
+      },
+    };
+    return this.http.get(url, options) as Observable<T>;
   };
 }
