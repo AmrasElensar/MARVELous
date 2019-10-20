@@ -1,29 +1,29 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {CharacterOverviewComponent} from './character-overview/character-overview.component';
 import {HttpClientModule} from '@angular/common/http';
-import {NgxPaginateModule} from 'ngx-paginate';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {MenuModule} from './menu/menu.module';
 import {AppRoutingModule} from './modules/app-routing/app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HeaderComponent} from './header/header.component';
+import {MaterialModule} from './modules/material/material.module';
+import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterOverviewComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
-    NgxPaginateModule,
     NgxPaginationModule,
     MenuModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    MaterialModule,
+    NgbCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

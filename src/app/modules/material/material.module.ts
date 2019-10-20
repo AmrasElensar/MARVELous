@@ -1,10 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgxPaginationModule} from 'ngx-pagination';
 import {ClickOutsideModule} from 'ng-click-outside';
-
 import {
   MatButtonModule,
   MatCardModule,
@@ -24,6 +22,7 @@ import {
   MatSnackBarModule,
   MatExpansionModule,
   MatButtonToggleModule,
+  MatSidenavModule,
 } from '@angular/material';
 
 
@@ -38,7 +37,6 @@ import {
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
-    NgxPaginationModule,
     MatListModule,
     MatMenuModule,
     MatInputModule,
@@ -53,6 +51,7 @@ import {
     MatSnackBarModule,
     MatExpansionModule,
     MatButtonToggleModule,
+    MatSidenavModule
   ],
   exports: [
     BrowserModule,
@@ -62,7 +61,6 @@ import {
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
-    NgxPaginationModule,
     MatListModule,
     MatMenuModule,
     MatInputModule,
@@ -77,7 +75,9 @@ import {
     MatSnackBarModule,
     MatExpansionModule,
     MatButtonToggleModule,
+    MatSidenavModule
   ]
 })
 
-export class MaterialModule { }
+export class MaterialModule {
+}
