@@ -1,4 +1,32 @@
-.character-thumbnail {
-  width: 150px;
-  height: 150px;
+@import "../../assets/variables";
+
+.page-title {
+  margin: 20px 0 20px 20px;
+  font-family: marvel;
+  color: $marvel-red;
+  font-weight: normal;
+}
+
+.character-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: center;
+
+  .character-card {
+    padding: 20px;
+    width: 250px;
+    height: 300px;
+
+    .card-title {
+      color: $marvel-red;
+    }
+
+    .character-thumbnail {
+      width: 120px;
+      height: 120px;
+      border-radius: 4px;
+    }
+  }
 }

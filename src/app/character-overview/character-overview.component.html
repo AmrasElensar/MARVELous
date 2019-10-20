@@ -1,23 +1,26 @@
-<h1>Character Overview</h1>
-<div>
-  <ul *ngIf="characters">
-    <li *ngFor="let character of characters |
+<div class="page-container">
+  <h1 class="page-title">{{'Character Overview' | uppercase}}</h1>
+  <div class="character-container" *ngIf="characters">
+    <mat-card class="character-card" *ngFor="let character of characters |
     paginate: {itemsPerPage: 10, currentPage: pageNumber, totalItems: totalPages}">
-      <p>{{character.name}}</p>
+      <mat-card-title class="card-title">{{character.name}}</mat-card-title>
       <img class="character-thumbnail" src="{{character.thumbnail.path+'.'+character.thumbnail.extension}}">
-      <button (click)="getComicsForCharacter(character.name, character.comics.collectionURI)">Get Comics</button>
-    </li>
-  </ul>
-  <div *ngIf="comics!.length">
-    <h2>{{characterNameForComicsOnScope+ '\'s comics'}}</h2>
-    <div *ngFor="let comic of comics">
-      <p>{{comic.title}}</p>
-      <img src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}" alt="">
-      <p>{{comic.description}}</p>
-    </div>
+      <mat-card-actions>
+        <button class="details-button" mat-raised-button>Details</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
+  <!--  <div *ngIf="comics!.length">-->
+  <!--    <h2>{{characterNameForComicsOnScope+ '\'s comics'}}</h2>-->
+  <!--    <div *ngFor="let comic of comics">-->
+  <!--      <p>{{comic.title}}</p>-->
+  <!--      <img src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}" alt="">-->
+  <!--      <p>{{comic.description}}</p>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <pagination-controls class="pagination-controls"
+                       (pageChange)="getCharacters($event,'10', ($event === 1 ? $event - 1 : ($event -1 ) * 10).toString())"></pagination-controls>
 </div>
 
 
 
-<pagination-controls (pageChange)="getCharacters($event,'10', ($event === 1 ? $event - 1 : ($event -1 ) * 10).toString())"></pagination-controls>

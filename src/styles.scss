@@ -10,7 +10,9 @@ html, body {
 }
 
 body {
-  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $mine-shaft;
 }
 
 * {
@@ -28,6 +30,7 @@ body {
   width: 200px;
   height: 200px;
 }
+
 .loading-ripple div {
   position: absolute;
   border: 5px solid $marvel-red;
@@ -35,9 +38,11 @@ body {
   border-radius: 50%;
   animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
+
 .loading-ripple div:nth-child(2) {
   animation-delay: -0.5s;
 }
+
 @keyframes lds-ripple {
   0% {
     top: 100px;
@@ -64,6 +69,30 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.pagination-controls .ngx-pagination .current {
+  background: $marvel-red;
+  padding: 0.325rem 0.625rem;
+  border-radius: 1rem;
+}
+
+.pagination-controls .ngx-pagination a, .ngx-pagination button {
+  padding: 0.325rem 0.625rem;
+  border-radius: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: #e6e6e6;
+  color: $mine-shaft;
 }

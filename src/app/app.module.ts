@@ -8,7 +8,6 @@ import {MenuModule} from './menu/menu.module';
 import {AppRoutingModule} from './modules/app-routing/app-routing.module';
 import {HeaderComponent} from './header/header.component';
 import {MaterialModule} from './modules/material/material.module';
-import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     MenuModule,
     AppRoutingModule,
-    MaterialModule,
-    NgbCarouselModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
