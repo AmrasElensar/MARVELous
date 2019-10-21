@@ -3,7 +3,9 @@ import {MarvelComicsService} from '../services/marvel-comics.service';
 import {Character} from '../models/character';
 import {CharacterCollection} from '../models/character-collection';
 import {Comic} from '../models/comic';
-import {ComicCollection} from '../models/comic-collection';
+import {DialogConfig} from '../utilities/dialog-config';
+import {MatDialog} from '@angular/material';
+import {CharacterDetailDialogComponent} from '../character-detail-dialog/character-detail-dialog.component';
 
 @Component({
   selector: 'app-character-overview',
@@ -15,9 +17,9 @@ export class CharacterOverviewComponent implements OnInit {
   comics: Comic[] = [];
   pageNumber = 1;
   totalPages: number;
-  characterNameForComicsOnScope: string;
 
-  constructor(private marvelComicService: MarvelComicsService) {
+  constructor(private marvelComicService: MarvelComicsService,
+              public matDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -34,12 +36,11 @@ export class CharacterOverviewComponent implements OnInit {
     this.totalPages = charactersCollection.data.total;
   };
 
-  getComicsForCharacter = (characterName: string, url: string) => {
-    this.characterNameForComicsOnScope = characterName;
-    this.marvelComicService.getResource(url).subscribe(this.setComics);
-  };
-
-  setComics = (comicCollection: ComicCollection) => {
-    this.comics = comicCollection.data.results;
+  openCharacterDetailsDialog = (character: Character) => {
+    const dialogData = {
+      character
+    };
+    const openCharacterDetailDialogConfig = DialogConfig.createDialogConfig(dialogData);
+    this.matDialog.open(CharacterDetailDialogComponent, openCharacterDetailDialogConfig);
   };
 }

@@ -1,0 +1,35 @@
+<mat-dialog-content class="character-details-container">
+  <img [src]="characterThumbnailUrl" alt="Character Thumbnail">
+  <h2>{{character.name}}</h2>
+  <p>{{character.description}}</p>
+  <ul>
+    <li *ngFor="let url of character.urls">
+      <p>{{url.type}}</p>
+      <p>{{url.url}}</p>
+    </li>
+  </ul>
+  <div class="detail-dropdown-container">
+    <mat-label class="dropdown-label">Comics</mat-label>
+    <mat-select class="detail-dropdown" [(ngModel)]="selectedComic" (selectionChange)="testLog($event)">
+      <mat-option *ngFor="let comic of character.comics.items" [value]="comic.resourceURI">
+        {{comic.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+  <div class="detail-dropdown-container">
+    <mat-label class="dropdown-label">Stories</mat-label>
+    <mat-select class="detail-dropdown" [(ngModel)]="selectedStory" (selectionChange)="testLog($event)">
+      <mat-option *ngFor="let story of character.stories.items" [value]="story.resourceURI">
+        {{story.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+  <div class="detail-dropdown-container">
+    <mat-label class="dropdown-label">Series</mat-label>
+    <mat-select class="detail-dropdown" [(ngModel)]="selectedSerie" (selectionChange)="testLog($event)">
+      <mat-option *ngFor="let serie of character.series.items" [value]="serie.resourceURI">
+        {{serie.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+</mat-dialog-content>

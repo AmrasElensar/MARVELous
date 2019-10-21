@@ -6,18 +6,10 @@
       <mat-card-title class="card-title">{{character.name}}</mat-card-title>
       <img class="character-thumbnail" src="{{character.thumbnail.path+'.'+character.thumbnail.extension}}">
       <mat-card-actions>
-        <button class="details-button" mat-raised-button>Details</button>
+        <button class="details-button" mat-raised-button (click)="openCharacterDetailsDialog(character)">Details</button>
       </mat-card-actions>
     </mat-card>
   </div>
-  <!--  <div *ngIf="comics!.length">-->
-  <!--    <h2>{{characterNameForComicsOnScope+ '\'s comics'}}</h2>-->
-  <!--    <div *ngFor="let comic of comics">-->
-  <!--      <p>{{comic.title}}</p>-->
-  <!--      <img src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}" alt="">-->
-  <!--      <p>{{comic.description}}</p>-->
-  <!--    </div>-->
-  <!--  </div>-->
   <pagination-controls class="pagination-controls"
                        (pageChange)="getCharacters($event,'10', ($event === 1 ? $event - 1 : ($event -1 ) * 10).toString())"></pagination-controls>
 </div>
