@@ -8,7 +8,7 @@ import {MenuModule} from './menu/menu.module';
 import {AppRoutingModule} from './modules/app-routing/app-routing.module';
 import {HeaderComponent} from './header/header.component';
 import {MaterialModule} from './modules/material/material.module';
-import { CharacterDetailDialogComponent } from './character-detail-dialog/character-detail-dialog.component';
+import {CharacterDetailDialogComponent} from './character-detail-dialog/character-detail-dialog.component';
 import {MatDialogModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 

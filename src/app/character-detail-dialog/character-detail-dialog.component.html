@@ -1,35 +1,59 @@
-<mat-dialog-content class="character-details-container">
-  <img [src]="characterThumbnailUrl" alt="Character Thumbnail">
-  <h2>{{character.name}}</h2>
-  <p>{{character.description}}</p>
-  <ul>
-    <li *ngFor="let url of character.urls">
-      <p>{{url.type}}</p>
-      <p>{{url.url}}</p>
-    </li>
-  </ul>
-  <div class="detail-dropdown-container">
-    <mat-label class="dropdown-label">Comics</mat-label>
-    <mat-select class="detail-dropdown" [(ngModel)]="selectedComic" (selectionChange)="testLog($event)">
-      <mat-option *ngFor="let comic of character.comics.items" [value]="comic.resourceURI">
-        {{comic.name}}
-      </mat-option>
-    </mat-select>
-  </div>
-  <div class="detail-dropdown-container">
-    <mat-label class="dropdown-label">Stories</mat-label>
-    <mat-select class="detail-dropdown" [(ngModel)]="selectedStory" (selectionChange)="testLog($event)">
-      <mat-option *ngFor="let story of character.stories.items" [value]="story.resourceURI">
-        {{story.name}}
-      </mat-option>
-    </mat-select>
-  </div>
-  <div class="detail-dropdown-container">
-    <mat-label class="dropdown-label">Series</mat-label>
-    <mat-select class="detail-dropdown" [(ngModel)]="selectedSerie" (selectionChange)="testLog($event)">
-      <mat-option *ngFor="let serie of character.series.items" [value]="serie.resourceURI">
-        {{serie.name}}
-      </mat-option>
-    </mat-select>
-  </div>
-</mat-dialog-content>
+<div class="detail-dialog">
+  <h1 mat-dialog-title class="detail-dialog-title">{{character.name | uppercase}}</h1>
+  <mat-divider></mat-divider>
+  <mat-dialog-content class="character-details-container">
+    <img class="character-image" [src]="characterThumbnailUrl" alt="Character Thumbnail">
+    <h3>Description</h3>
+    <p>{{character.description}}</p>
+    <mat-divider></mat-divider>
+    <div class="link-array">
+      <a *ngIf="wikiUrl" class="link-button" target="_blank" mat-raised-button [href]="wikiUrl">Wiki Page</a>
+      <a *ngIf="comicsUrl" class="link-button" target="_blank" mat-raised-button [href]="comicsUrl">Comic Page</a>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-accordion>
+      <mat-expansion-panel (opened)="comicPanelOpenState = true"
+                           (closed)="comicPanelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Comics</mat-panel-title>
+          <mat-panel-description>
+            {{comicPanelOpenState ? comicPanelOpenDescription : panelClosedDescription}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="expansion-option" *ngFor="let comic of character.comics.items">
+          {{comic.name}}
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="storiesPanelOpenState = true"
+                           (closed)="storiesPanelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Stories</mat-panel-title>
+          <mat-panel-description>
+            {{storiesPanelOpenState ? storiesPanelOpenDescription : panelClosedDescription}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="expansion-option" *ngFor="let story of character.stories.items">
+          {{story.name}}
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="seriesPanelOpenState = true"
+                           (closed)="seriesPanelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Series</mat-panel-title>
+          <mat-panel-description>
+            {{seriesPanelOpenState ? seriesPanelOpenDescription : panelClosedDescription}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="expansion-option" *ngFor="let serie of character.series.items">
+          {{serie.name}}
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions>
+    <button class="dialog-button" mat-raised-button (click)="closeDialog()">Close</button>
+  </mat-dialog-actions>
+</div>
