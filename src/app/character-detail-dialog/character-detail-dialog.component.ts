@@ -23,10 +23,10 @@ export class CharacterDetailDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) data,
               public dialogRef: MatDialogRef<CharacterDetailDialogComponent>) {
     this.character = data.character;
-    this.characterThumbnailUrl = `${this.character.thumbnail.path}.${this.character.thumbnail.extension}`;
   }
 
   ngOnInit() {
+    this.characterThumbnailUrl = `${this.character.thumbnail.path}.${this.character.thumbnail.extension}`;
     this.setUrls();
   }
 
