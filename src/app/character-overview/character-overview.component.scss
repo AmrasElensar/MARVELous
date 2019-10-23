@@ -1,11 +1,5 @@
 @import "../../assets/styles/variables";
-
-.page-title {
-  margin: 20px 0 20px 20px;
-  font-family: marvel;
-  color: $marvel-red;
-  font-weight: normal;
-}
+@import "../../assets/styles/overview-header";
 
 .character-container {
   display: grid;

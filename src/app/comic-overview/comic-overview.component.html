@@ -1,6 +1,7 @@
 <div class="page-container">
   <div class="page-header">
     <h1 class="page-title">{{'Comic Overview' | uppercase}}</h1>
+    <h2 class="character-name" *ngIf="characterName">Results for: {{characterName}}</h2>
     <div class="dropdown-container">
       <mat-form-field class="dropdown" color=warn>
         <mat-label class="dropdown-label">Order By</mat-label>

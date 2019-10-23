@@ -4,9 +4,11 @@ import {MarvelComicsService} from '../services/marvel-comics.service';
 import {Comic} from '../models/comic';
 import {DialogConfig} from '../utilities/dialog-config';
 import {CharacterDetailDialogComponent} from '../character-detail-dialog/character-detail-dialog.component';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {COMIC_ORDER_BY} from './comic-order-by';
 import {COMIC_FILTERS} from './comic-filters';
+import {ActivatedRoute} from '@angular/router';
+import {CharacterCollection} from '../models/character-collection';
 
 
 @Component({
@@ -25,17 +27,34 @@ export class ComicOverviewComponent implements OnInit {
   searchTerm: string;
   orderBy = COMIC_ORDER_BY;
   filterBy = COMIC_FILTERS;
+  characterId: string;
+  characterComicsUrl: string;
+  characterName: string;
 
   constructor(private marvelComicService: MarvelComicsService,
-              public matDialog: MatDialog) {
+              public matDialog: MatDialog,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getComicsPage(1, 0);
+    this.matDialog.closeAll();
+    this.characterId = this.route.snapshot.params.characterId;
+    if (this.characterId) {
+      this.characterComicsUrl = `http://gateway.marvel.com/v1/public/characters/${this.characterId}/comics`;
+
+      this.getComicPageForCharacter(1, 0);
+    } else {
+      this.getComicsPage(1, 0);
+    }
   }
 
   getComics = () => {
     this.marvelComicService.getComics(this.pageSize, this.pageOffset, this.orderByProperty, this.filterProperty)
+      .subscribe(this.setComicsAndPagingData);
+  };
+
+  getComicsForCharacter = () => {
+    this.marvelComicService.getResource(this.characterComicsUrl, this.pageSize, this.pageOffset, this.orderByProperty, this.filterProperty)
       .subscribe(this.setComicsAndPagingData);
   };
 
@@ -56,5 +75,20 @@ export class ComicOverviewComponent implements OnInit {
     this.pageNumber = pageNumber;
     this.pageOffset = pageOffset.toString();
     this.getComics();
-  }
+  };
+
+  getComicPageForCharacter = (pageNumber: number, pageOffset: number) => {
+    this.pageNumber = pageNumber;
+    this.pageOffset = pageOffset.toString();
+    this.getComicsForCharacter();
+    this.getCharacterName();
+  };
+
+  getCharacterName = () => {
+    this.marvelComicService.getCharacter(this.characterId).subscribe(this.setCharacterName);
+  };
+
+  setCharacterName = (characterCollection: CharacterCollection) => {
+    this.characterName = characterCollection.data.results[0].name;
+  };
 }

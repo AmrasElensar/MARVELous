@@ -5,6 +5,7 @@ import {CharacterCollection} from '../models/character-collection';
 import {DialogConfig} from '../utilities/dialog-config';
 import {MatDialog} from '@angular/material';
 import {CharacterDetailDialogComponent} from '../character-detail-dialog/character-detail-dialog.component';
+import {CHARACTER_ORDER_BY} from './character-order-by';
 
 @Component({
   selector: 'app-character-overview',
@@ -14,19 +15,29 @@ import {CharacterDetailDialogComponent} from '../character-detail-dialog/charact
 export class CharacterOverviewComponent implements OnInit {
   characters: Character[];
   pageNumber = 1;
+  pageSize = '10';
+  pageOffset = '0';
   totalPages: number;
+  orderBy = CHARACTER_ORDER_BY;
+  orderByProperty = 'name';
 
   constructor(private marvelComicService: MarvelComicsService,
               public matDialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.getCharacters(1, '10', '0');
+    this.getCharacterPage(1, 0);
   }
 
-  getCharacters = (pageNumber: number, pageSize?: string, pageOffset?: string) => {
+  getCharacterPage = (pageNumber: number, pageOffset: number) => {
     this.pageNumber = pageNumber;
-    return this.marvelComicService.getCharacters(pageSize, pageOffset).subscribe(this.setCharactersAndPagingData);
+    this.pageOffset = pageOffset.toString();
+    this.getCharacters();
+  };
+
+  getCharacters = () => {
+    return this.marvelComicService.getCharacters(this.pageSize, this.pageOffset, this.orderByProperty)
+      .subscribe(this.setCharactersAndPagingData);
   };
 
   setCharactersAndPagingData = (charactersCollection: CharacterCollection) => {

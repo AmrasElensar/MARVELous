@@ -8,7 +8,8 @@
     <mat-divider></mat-divider>
     <div class="link-array">
       <a *ngIf="wikiUrl" class="link-button" target="_blank" mat-raised-button [href]="wikiUrl">Wiki Page</a>
-      <a *ngIf="comicsUrl" class="link-button" target="_blank" mat-raised-button [href]="comicsUrl">Comic Page</a>
+      <a *ngIf="comicsUrl" class="link-button" target="_blank" mat-raised-button [href]="comicsUrl">Read comics online</a>
+      <button mat-raised-button class="link-button" [routerLink]="['/comics/character', character.id]">Comic overview</button>
     </div>
     <mat-divider></mat-divider>
     <mat-accordion>

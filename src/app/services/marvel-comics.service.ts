@@ -15,15 +15,25 @@ export class MarvelComicsService {
   constructor(private http: HttpClient) {
   }
 
-  getCharacters = (pageSize?: string, pageOffset?: string): Observable<CharacterCollection> => {
+  getCharacters = (pageSize?: string, pageOffset?: string, orderBy?: string): Observable<CharacterCollection> => {
     const options = {
       params: {
         ...(pageSize ? {limit: pageSize} : {}),
         ...(pageOffset ? {offset: pageOffset} : {}),
+        ...(orderBy ? {orderBy} : {}),
         apikey: environment.API_KEY
       }
     };
     return this.http.get(`${this.apiUrl}/v1/public/characters`, options) as Observable<CharacterCollection>;
+  };
+
+  getCharacter = (characterId: string): Observable<CharacterCollection> => {
+    const options = {
+      params: {
+        apikey: environment.API_KEY
+      }
+    };
+    return this.http.get(`${this.apiUrl}/v1/public/characters/${characterId}`, options) as Observable<CharacterCollection>;
   };
 
   getComics = (pageSize?: string, pageOffset?: string, orderBy?: string, format?: string): Observable<ComicCollection> => {
@@ -51,9 +61,13 @@ export class MarvelComicsService {
     return this.http.get(`${this.apiUrl}/v1/public/creators`, options) as Observable<CreatorCollection>;
   };
 
-  getResource<T>(url): Observable<T> {
+  getResource<T>(url, pageSize?: string, pageOffset?: string, orderBy?: string, format?: string): Observable<T> {
     const options = {
       params: {
+        ...(pageSize ? {limit: pageSize} : {}),
+        ...(pageOffset ? {offset: pageOffset} : {}),
+        ...(orderBy ? {orderBy} : {}),
+        ...(format ? {format} : {}),
         apikey: environment.API_KEY
       },
     };

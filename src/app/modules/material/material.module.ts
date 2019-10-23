@@ -23,6 +23,8 @@ import {
   MatExpansionModule,
   MatButtonToggleModule,
   MatSidenavModule,
+  MatDialogModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 
@@ -51,7 +53,9 @@ import {
     MatSnackBarModule,
     MatExpansionModule,
     MatButtonToggleModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     BrowserModule,
@@ -75,7 +79,9 @@ import {
     MatSnackBarModule,
     MatExpansionModule,
     MatButtonToggleModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ]
 })
 

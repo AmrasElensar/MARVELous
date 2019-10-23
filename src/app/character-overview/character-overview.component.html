@@ -1,12 +1,26 @@
 <div class="page-container">
-  <h1 class="page-title">{{'Character Overview' | uppercase}}</h1>
+  <div class="page-header">
+    <h1 class="page-title">{{'Character Overview' | uppercase}}</h1>
+    <div class="dropdown-container">
+      <mat-form-field class="dropdown" color=warn>
+        <mat-label class="dropdown-label">Order By</mat-label>
+        <mat-select [(ngModel)]="orderByProperty"
+                    (selectionChange)="getCharacterPage(1, 0)">
+          <mat-option class="dropdown-item" *ngFor="let order of orderBy" [value]="order.value">
+            {{order.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
   <div class="character-container" *ngIf="characters">
     <mat-card class="character-card" *ngFor="let character of characters |
     paginate: {itemsPerPage: 10, currentPage: pageNumber, totalItems: totalPages}">
       <mat-card-title class="card-title">{{character.name}}</mat-card-title>
       <img class="character-thumbnail" src="{{character.thumbnail.path+'.'+character.thumbnail.extension}}">
       <mat-card-actions>
-        <button class="details-button" mat-raised-button (click)="openCharacterDetailsDialog(character)">Details</button>
+        <button class="details-button" mat-raised-button (click)="openCharacterDetailsDialog(character)">Details
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

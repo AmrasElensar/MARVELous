@@ -9,7 +9,6 @@ import {AppRoutingModule} from './modules/app-routing/app-routing.module';
 import {HeaderComponent} from './header/header.component';
 import {MaterialModule} from './modules/material/material.module';
 import {CharacterDetailDialogComponent} from './character-detail-dialog/character-detail-dialog.component';
-import {MatDialogModule, MatProgressSpinnerModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {ComicOverviewComponent} from './comic-overview/comic-overview.component';
 import {CreatorOverviewComponent} from './creator-overview/creator-overview.component';
@@ -33,9 +32,8 @@ import {LoaderInterceptor} from './interceptors/loader.interceptor';
     MenuModule,
     AppRoutingModule,
     MaterialModule,
-    MatDialogModule,
+
     FormsModule,
-    MatProgressSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}

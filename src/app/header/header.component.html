@@ -1,4 +1,10 @@
 <mat-toolbar class="header">
   <span>MARVELous</span>
   <img class="header-logo" src="../../assets/images/marvel-logo.png" alt="" [routerLink]="['/']">
+  <div>
+    <button [ngClass]="{'hidden' : onHomePage() }" mat-raised-button color="black" [matMenuTriggerFor]="navMenu">Menu</button>
+    <mat-menu #navMenu="matMenu">
+      <app-menu></app-menu>
+    </mat-menu>
+  </div>
 </mat-toolbar>
