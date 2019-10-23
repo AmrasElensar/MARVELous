@@ -1,0 +1,38 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">{{'Comic Overview' | uppercase}}</h1>
+    <div class="dropdown-container">
+      <mat-form-field class="dropdown" color=warn>
+        <mat-label class="dropdown-label">Order By</mat-label>
+        <mat-select [(ngModel)]="orderByProperty"
+                    (selectionChange)="getComicsPage(1, 0)">
+          <mat-option class="dropdown-item" *ngFor="let order of orderBy" [value]="order.value">
+            {{order.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="dropdown" color=warn>
+        <mat-label class="dropdown-label">Filter By</mat-label>
+        <mat-select [(ngModel)]="filterProperty"
+                    (selectionChange)="getComicsPage(1, 0)">
+          <mat-option class="dropdown-item" *ngFor="let filter of filterBy" [value]="filter.value">
+            {{filter.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="comic-container" *ngIf="comics">
+    <mat-card class="comic-card" *ngFor="let comic of comics |
+    paginate: {itemsPerPage: 12, currentPage: pageNumber, totalItems: totalPages}">
+      <mat-card-title class="card-title">{{comic.title}}</mat-card-title>
+      <img class="character-thumbnail" src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}">
+      <mat-card-actions>
+        <button class="details-button" mat-raised-button (click)="openComicDetailsDialog(comic)">Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <pagination-controls class="pagination-controls"
+                       (pageChange)="getComicsPage($event,  ($event === 1 ? $event - 1 : ($event -1 ) * 12))"></pagination-controls>
+</div>

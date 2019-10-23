@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {MarvelComicsService} from '../services/marvel-comics.service';
 import {Character} from '../models/character';
 import {CharacterCollection} from '../models/character-collection';
-import {Comic} from '../models/comic';
 import {DialogConfig} from '../utilities/dialog-config';
 import {MatDialog} from '@angular/material';
 import {CharacterDetailDialogComponent} from '../character-detail-dialog/character-detail-dialog.component';
@@ -14,7 +13,6 @@ import {CharacterDetailDialogComponent} from '../character-detail-dialog/charact
 })
 export class CharacterOverviewComponent implements OnInit {
   characters: Character[];
-  comics: Comic[] = [];
   pageNumber = 1;
   totalPages: number;
 

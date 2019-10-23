@@ -11,6 +11,7 @@ import {MaterialModule} from './modules/material/material.module';
 import {CharacterDetailDialogComponent} from './character-detail-dialog/character-detail-dialog.component';
 import {MatDialogModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
+import { ComicOverviewComponent } from './comic-overview/comic-overview.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from '@angular/forms';
     CharacterOverviewComponent,
     DashboardComponent,
     HeaderComponent,
-    CharacterDetailDialogComponent
+    CharacterDetailDialogComponent,
+    ComicOverviewComponent
   ],
   imports: [
     HttpClientModule,

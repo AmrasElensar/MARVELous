@@ -9,11 +9,13 @@
     </div>
 
   <div *ngIf="menuVisibility" class="dashboard-block">
-    <div class="dashboard-item" id="character-button" [routerLink]="['/characters']">
+    <div class="dashboard-item" id="character-button"
+         [routerLink]="['/characters']">
       <p class="button-text">{{'Browse characters' | uppercase}}</p>
       <mat-icon class="button-icon">person</mat-icon>
     </div>
-    <div class="dashboard-item" id="comic-button">
+    <div class="dashboard-item" id="comic-button"
+         [routerLink]="['/comics']">
       <p class="button-text">{{'Browse comics' | uppercase}}</p>
       <mat-icon class="button-icon">menu_book</mat-icon>
     </div>

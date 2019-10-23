@@ -1,8 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {MarvelComicsService} from '../services/marvel-comics.service';
 import {Character} from '../models/character';
-import {ComicCollection} from '../models/comic-collection';
 
 @Component({
   selector: 'app-character-detail-dialog',
@@ -23,7 +21,6 @@ export class CharacterDetailDialogComponent implements OnInit {
   seriesPanelOpenDescription = `Click to browse to the series' detail page`;
 
   constructor(@Inject(MAT_DIALOG_DATA) data,
-              private marvelComicService: MarvelComicsService,
               public dialogRef: MatDialogRef<CharacterDetailDialogComponent>) {
     this.character = data.character;
     this.characterThumbnailUrl = `${this.character.thumbnail.path}.${this.character.thumbnail.extension}`;
@@ -48,14 +45,6 @@ export class CharacterDetailDialogComponent implements OnInit {
     } else {
       this.comicsUrl = undefined;
     }
-  };
-
-  getComicsForCharacter = (characterName: string, url: string) => {
-    this.marvelComicService.getResource(url).subscribe(this.setComics);
-  };
-
-  setComics = (comicCollection: ComicCollection) => {
-
   };
 
   closeDialog = () => {
