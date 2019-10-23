@@ -12,6 +12,7 @@ import {CharacterDetailDialogComponent} from './character-detail-dialog/characte
 import {MatDialogModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import { ComicOverviewComponent } from './comic-overview/comic-overview.component';
+import { CreatorOverviewComponent } from './creator-overview/creator-overview.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ComicOverviewComponent } from './comic-overview/comic-overview.componen
     DashboardComponent,
     HeaderComponent,
     CharacterDetailDialogComponent,
-    ComicOverviewComponent
+    ComicOverviewComponent,
+    CreatorOverviewComponent
   ],
   imports: [
     HttpClientModule,

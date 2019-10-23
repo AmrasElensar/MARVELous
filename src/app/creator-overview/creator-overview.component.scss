@@ -1,0 +1,57 @@
+@import "../../assets/styles/variables";
+
+.page-title {
+  margin: 20px 0 20px 20px;
+  font-family: marvel;
+  color: $marvel-red;
+  font-weight: normal;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-container {
+  display: flex;
+  margin: 10px 10px 0;
+
+  .dropdown {
+    &.dropdown {
+      margin-right: 20px;
+    }
+  }
+}
+
+.dropdown-item.mat-selected {
+  color: $marvel-red !important;
+}
+
+.dropdown-label {
+  color: $marvel-red;
+}
+
+.mini-thumbnail {
+  height: 42px;
+}
+
+.list-header {
+  margin-bottom: 20px;
+  color: $marvel-red;
+  font-size: 18px;
+}
+
+.creator-list-item {
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: $tundora;
+  color: white;
+
+  .list-button {
+    background-color: $marvel-red;
+  }
+}
+
+.grid {
+  padding: 0 20px;
+}

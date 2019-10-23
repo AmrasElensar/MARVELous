@@ -19,7 +19,8 @@
       <p class="button-text">{{'Browse comics' | uppercase}}</p>
       <mat-icon class="button-icon">menu_book</mat-icon>
     </div>
-    <div class="dashboard-item" id="creator-button">
+    <div class="dashboard-item" id="creator-button"
+         [routerLink]="['/creators']">
       <p class="button-text">{{'Browse creators' | uppercase}}</p>
       <mat-icon class="button-icon">create</mat-icon>
     </div>

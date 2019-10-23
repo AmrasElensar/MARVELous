@@ -1,0 +1,59 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">{{'Creator Overview' | uppercase}}</h1>
+    <div class="dropdown-container">
+      <mat-form-field class="dropdown" color=warn>
+        <mat-label class="dropdown-label">Order By</mat-label>
+        <mat-select [(ngModel)]="orderByProperty"
+                    (selectionChange)="getCreatorsPage(1, 0)">
+          <mat-option class="dropdown-item" *ngFor="let order of orderBy" [value]="order.value">
+            {{order.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="grid">
+    <mat-grid-list class="list-header" cols="8" rowHeight="20px">
+      <mat-grid-tile colspan="1" class="grid-left">Thumbnail</mat-grid-tile>
+      <mat-grid-tile colspan="1" class="grid-left">First name</mat-grid-tile>
+      <mat-grid-tile colspan="1" class="grid-left">Middle name</mat-grid-tile>
+      <mat-grid-tile colspan="1" class="grid-left">Last name</mat-grid-tile>
+      <mat-grid-tile colspan="1" class="grid-left">Series</mat-grid-tile>
+      <mat-grid-tile colspan="1" class="grid-left">Stories</mat-grid-tile>
+      <mat-grid-tile colspan="1" class="grid-left">Events</mat-grid-tile>
+      <mat-grid-tile colspan="1" class="grid-left">Comics</mat-grid-tile>
+    </mat-grid-list>
+
+    <div *ngIf="creators">
+      <div *ngFor="let creator of creators | paginate: {itemsPerPage: 12, currentPage: pageNumber, totalItems: totalPages}"
+        class="creator-list-item">
+        <mat-grid-list cols="8" rowHeight="54px">
+          <mat-grid-tile colspan="1" class="grid-left">
+            <img class="mini-thumbnail"
+                 src="{{creator.thumbnail.path+'.'+creator.thumbnail.extension}}"
+                 alt="thumbnail">
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" class="grid-left">{{creator.firstName}}</mat-grid-tile>
+          <mat-grid-tile colspan="1" class="grid-left">{{creator.middleName}}</mat-grid-tile>
+          <mat-grid-tile colspan="1" class="grid-left">{{creator.lastName}}</mat-grid-tile>
+          <mat-grid-tile colspan="1" class="grid-left">
+            <button class="list-button" mat-raised-button>Series</button>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" class="grid-left">
+            <button class="list-button" mat-raised-button>Stories</button>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" class="grid-left">
+            <button class="list-button" mat-raised-button>Events</button>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" class="grid-left">
+            <button class="list-button" mat-raised-button>Comics</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+  <pagination-controls class="pagination-controls"
+                       (pageChange)="getCreatorsPage($event,  ($event === 1 ? $event - 1 : ($event -1 ) * 12))"></pagination-controls>
+</div>

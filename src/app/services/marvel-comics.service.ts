@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {CharacterCollection} from '../models/character-collection';
 import {ComicCollection} from '../models/comic-collection';
+import {CreatorCollection} from '../models/creator-collection';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,18 @@ export class MarvelComicsService {
       }
     };
     return this.http.get(`${this.apiUrl}/v1/public/comics`, options) as Observable<ComicCollection>;
+  };
+
+  getCreators = (pageSize?: string, pageOffset?: string, orderBy?: string): Observable<CreatorCollection> => {
+    const options = {
+      params: {
+        ...(pageSize ? {limit: pageSize} : {}),
+        ...(pageOffset ? {offset: pageOffset} : {}),
+        ...(orderBy ? {orderBy} : {}),
+        apikey: environment.API_KEY
+      }
+    };
+    return this.http.get(`${this.apiUrl}/v1/public/creators`, options) as Observable<CreatorCollection>;
   };
 
   getResource<T>(url): Observable<T> {
