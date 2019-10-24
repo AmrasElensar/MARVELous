@@ -13,6 +13,16 @@
   }
 }
 
-.hidden {
-  visibility: hidden !important;
+.menu-button {
+  background-color: $marvel-red;
+  color: $mine-shaft;
+  font-size: 18px;
+
+  mat-icon {
+    color: $mine-shaft;
+  }
 }
+
+
+
+

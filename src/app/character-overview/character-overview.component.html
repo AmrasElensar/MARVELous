@@ -25,7 +25,7 @@
     </mat-card>
   </div>
   <pagination-controls class="pagination-controls"
-                       (pageChange)="getCharacters($event,'10', ($event === 1 ? $event - 1 : ($event -1 ) * 10).toString())"></pagination-controls>
+                       (pageChange)="getCharacterPage($event, ($event === 1 ? $event - 1 : ($event -1 ) * 10))"></pagination-controls>
 </div>
 
 

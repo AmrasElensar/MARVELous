@@ -99,3 +99,17 @@ body {
   background: #e6e6e6;
   color: $mine-shaft;
 }
+
+.details-button {
+  background-color: $marvel-red;
+}
+
+.menu-button span.mat-button-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.menu-button mat-icon {
+  margin: auto 2px auto 0;
+}
+

@@ -1,10 +1,13 @@
 <mat-toolbar class="header">
-  <span>MARVELous</span>
-  <img class="header-logo" src="../../assets/images/marvel-logo.png" alt="" [routerLink]="['/']">
-  <div>
-    <button [ngClass]="{'hidden' : onHomePage() }" mat-raised-button color="black" [matMenuTriggerFor]="navMenu">Menu</button>
+  <div class="menu-wrapper">
+    <button class="menu-button" [disabled]="onHomePage()" mat-raised-button [matMenuTriggerFor]="navMenu">
+    <mat-icon>menu</mat-icon>
+      MARVELous
+    </button>
     <mat-menu #navMenu="matMenu">
       <app-menu></app-menu>
     </mat-menu>
   </div>
+  <img class="header-logo" src="../../assets/images/marvel-logo.png" alt="" [routerLink]="['/']">
+
 </mat-toolbar>
