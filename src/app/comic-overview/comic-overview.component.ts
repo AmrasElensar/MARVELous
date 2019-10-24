@@ -9,6 +9,7 @@ import {COMIC_ORDER_BY} from './comic-order-by';
 import {COMIC_FILTERS} from './comic-filters';
 import {ActivatedRoute} from '@angular/router';
 import {CharacterCollection} from '../models/character-collection';
+import {ComicDetailDialogComponent} from '../comic-detail-dialog/comic-detail-dialog.component';
 
 
 @Component({
@@ -67,8 +68,8 @@ export class ComicOverviewComponent implements OnInit {
     const dialogData = {
       comic
     };
-    const openCharacterDetailDialogConfig = DialogConfig.createDialogConfig(dialogData);
-    this.matDialog.open(CharacterDetailDialogComponent, openCharacterDetailDialogConfig);
+    const openComicDetailDialogConfig = DialogConfig.createDialogConfig(dialogData);
+    this.matDialog.open(ComicDetailDialogComponent, openComicDetailDialogConfig);
   };
 
   getComicsPage = (pageNumber: number, pageOffset: number) => {

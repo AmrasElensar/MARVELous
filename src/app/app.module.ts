@@ -14,6 +14,7 @@ import {ComicOverviewComponent} from './comic-overview/comic-overview.component'
 import {CreatorOverviewComponent} from './creator-overview/creator-overview.component';
 import {LoaderComponent} from './utilities/loader/loader.component';
 import {LoaderInterceptor} from './interceptors/loader.interceptor';
+import {ComicDetailDialogComponent} from './comic-detail-dialog/comic-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {LoaderInterceptor} from './interceptors/loader.interceptor';
     CharacterDetailDialogComponent,
     ComicOverviewComponent,
     CreatorOverviewComponent,
-    LoaderComponent
+    LoaderComponent,
+    ComicDetailDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -39,7 +41,7 @@ import {LoaderInterceptor} from './interceptors/loader.interceptor';
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CharacterDetailDialogComponent]
+  entryComponents: [CharacterDetailDialogComponent, ComicDetailDialogComponent]
 })
 export class AppModule {
 }

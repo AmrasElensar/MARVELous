@@ -1,0 +1,72 @@
+<div class="detail-dialog">
+  <h1 mat-dialog-title class="detail-dialog-title">{{comic.title | uppercase}}</h1>
+  <mat-divider></mat-divider>
+  <mat-dialog-content class="character-details-container">
+    <div class="comic-images">
+      <img class="main-image" [src]="comicThumbnailUrl" alt="Character Thumbnail">
+      <div class="sub-images">
+        <img class="sub-image" *ngFor="let image of comic.images" [src]="image.path+'.'+image.extension" alt="">
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="comic-info">
+      <div class="info-group">
+        <p>Format: {{comic.format}}</p>
+        <p>Issue Nr: {{comic.issueNumber}}</p>
+      </div>
+      <div class="info-group">
+        <p *ngIf="printPrice">Print price: {{printPrice}}</p>
+        <p *ngIf="digitalPrice">Digital price: {{digitalPrice}}</p>
+      </div>
+    </div>
+    <h3>Description</h3>
+    <p>{{comic.description}}</p>
+    <mat-divider></mat-divider>
+    <div class="link-array">
+      <a *ngIf="detailUrl" class="link-button" target="_blank" mat-raised-button [href]="detailUrl">Detail Page</a>
+      <a *ngIf="purchaseUrl" class="link-button" target="_blank" mat-raised-button [href]="purchaseUrl">Purchase
+        Comics</a>
+      <a *ngIf="readerUrl" matTooltip="Subscription needed" class="link-button" target="_blank" mat-raised-button
+         [href]="readerUrl">Read online</a>
+
+      <!--      <button mat-raised-button class="link-button" [routerLink]="['/comics/character', character.id]">Comic overview</button>-->
+    </div>
+    <mat-divider></mat-divider>
+    <mat-accordion>
+      <mat-expansion-panel *ngIf="comic.characters.items.length">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Comics</mat-panel-title>
+          <mat-panel-description>Characters</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="expansion-option" *ngFor="let character of comic.characters.items">
+          {{character.name}} - {{character.role}}
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel *ngIf="comic.stories.items.length">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Stories</mat-panel-title>
+          <mat-panel-description></mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="expansion-option" *ngFor="let story of comic.stories.items">
+          {{story.name}}
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel *ngIf="comic.creators.items.length">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Creators</mat-panel-title>
+          <mat-panel-description></mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="expansion-option" *ngFor="let creator of comic.creators.items">
+          {{creator.name}} - {{creator.role}}
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions>
+    <button class="dialog-button" mat-raised-button (click)="closeDialog()">Close</button>
+  </mat-dialog-actions>
+</div>
+
