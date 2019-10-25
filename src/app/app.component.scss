@@ -1,0 +1,18 @@
+@import "../assets/styles/variables";
+$icon-font-path: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/" !default;
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap";
+
+mat-divider.mat-divider {
+  border-top-color: $marvel-red;
+}
+
+.nav-button {
+  color: white;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: $mine-shaft;
+}

@@ -1,0 +1,36 @@
+.page-title {
+  margin: 20px 0 20px 20px;
+  font-family: marvel;
+  color: $marvel-red;
+  font-weight: normal;
+}
+
+.character-name {
+  margin: 20px 0 20px 20px;
+  color: #e62429;
+  flex: 1;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-container {
+  display: flex;
+  margin: 10px 10px 0;
+
+  .dropdown {
+    &.dropdown {
+      margin-right: 20px;
+    }
+  }
+}
+
+.dropdown-item.mat-selected {
+  color: $marvel-red !important;
+}
+
+.dropdown-label {
+  color: $marvel-red;
+}

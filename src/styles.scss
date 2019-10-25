@@ -1,1 +1,125 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/styles/variables";
+@import "assets/styles/mat-list-tile-extension";
+
+@font-face {
+  font-family: marvel;
+  src: url("assets/fonts/Marvel-Regular.ttf") format("truetype");
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $mine-shaft;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.spinner-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading-ripple {
+  position: absolute;
+  left: 43%;
+  top: 43%;
+}
+
+.loading-ripple div {
+  position: absolute;
+  border: 5px solid $marvel-red;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.loading-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 100px;
+    left: 100px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.pagination-controls .ngx-pagination .current {
+  background: $marvel-red;
+  padding: 0.325rem 0.625rem;
+  border-radius: 1rem;
+}
+
+.pagination-controls .ngx-pagination a, .ngx-pagination button {
+  padding: 0.325rem 0.625rem;
+  border-radius: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: #e6e6e6;
+  color: $mine-shaft;
+}
+
+.details-button {
+  background-color: $marvel-red;
+}
+
+.menu-button span.mat-button-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.menu-button mat-icon {
+  margin: auto 2px auto 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgray;
+  border-radius: 4px;
+  width: 70%;
+  margin: 20px auto;
+}
+

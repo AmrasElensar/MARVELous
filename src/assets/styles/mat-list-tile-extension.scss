@@ -1,0 +1,23 @@
+mat-grid-tile {
+  &.grid-left {
+    figure.mat-figure {
+      justify-content: flex-start !important;
+      padding-left: 20px;
+    }
+  }
+
+  &.grid-right {
+    figure.mat-figure {
+      justify-content: flex-end !important;
+      padding-right: 20px;
+    }
+  }
+
+  &.grid-center {
+    figure.mat-figure {
+      justify-content: center !important;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+}

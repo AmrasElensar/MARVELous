@@ -1,0 +1,28 @@
+<img class="cover-image" src="../../assets/images/marvel-background.jpg" alt="cover-image">
+<div class="dashboard-container">
+    <div *ngIf="!menuVisibility" class="welcome-block">
+      <h3 class="welcome-message">{{'Welcome to the Marvel Universe' | uppercase}}</h3>
+      <button mat-raised-button class="entry-button" (click)="toggleMenuVisibility()">Click to enter</button>
+    </div>
+    <div *ngIf="!menuVisibility" class="entry-logo-container">
+      <img class="entry-logo" src="../../assets/images/captain-america-adamantium-shield-pngrepo-com.png" alt="">
+    </div>
+
+  <div *ngIf="menuVisibility" class="dashboard-block">
+    <div class="dashboard-item" id="character-button"
+         [routerLink]="['/characters']">
+      <p class="button-text">{{'Browse characters' | uppercase}}</p>
+      <mat-icon class="button-icon">person</mat-icon>
+    </div>
+    <div class="dashboard-item" id="comic-button"
+         [routerLink]="['/comics']">
+      <p class="button-text">{{'Browse comics' | uppercase}}</p>
+      <mat-icon class="button-icon">menu_book</mat-icon>
+    </div>
+    <div class="dashboard-item" id="creator-button"
+         [routerLink]="['/creators']">
+      <p class="button-text">{{'Browse creators' | uppercase}}</p>
+      <mat-icon class="button-icon">create</mat-icon>
+    </div>
+  </div>
+</div>

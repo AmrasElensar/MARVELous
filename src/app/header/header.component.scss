@@ -1,0 +1,28 @@
+@import "../../assets/styles/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $marvel-red;
+  z-index: 2;
+  height: 8vh;
+
+  .header-logo {
+    height: inherit;
+    cursor: pointer;
+  }
+}
+
+.menu-button {
+  background-color: $marvel-red;
+  color: $mine-shaft;
+  font-size: 18px;
+
+  mat-icon {
+    color: $mine-shaft;
+  }
+}
+
+
+
+

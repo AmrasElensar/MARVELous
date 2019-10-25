@@ -1,0 +1,27 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/overview-header";
+
+.mini-thumbnail {
+  height: 42px;
+}
+
+.list-header {
+  margin-bottom: 20px;
+  color: $marvel-red;
+  font-size: 18px;
+}
+
+.creator-list-item {
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: $tundora;
+  color: white;
+
+  .list-button {
+    background-color: $marvel-red;
+  }
+}
+
+.grid {
+  padding: 0 20px;
+}
