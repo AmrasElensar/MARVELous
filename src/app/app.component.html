@@ -1,6 +1,14 @@
 <app-loader></app-loader>
 <div class="main-container">
-  <app-header></app-header>
+  <app-header [navMenu]="navMenu" (messageEvent)="printMessage($event)"></app-header>
+  <mat-menu #navMenu="matMenu">
+    <button class="nav-button" mat-menu-item [routerLink]="'/characters'">Characters</button>
+    <button class="nav-button" mat-menu-item [routerLink]="'/comics'">Comics</button>
+    <button class="nav-button" mat-menu-item [routerLink]="'/creators'">Creators</button>
+    <mat-divider></mat-divider>
+    <button class="nav-button" mat-menu-item [routerLink]="'/'">Home</button>
+    <button class="nav-button" mat-menu-item (click)="logout()">Log out</button>
+  </mat-menu>
   <router-outlet></router-outlet>
 </div>
 

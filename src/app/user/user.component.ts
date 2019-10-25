@@ -55,13 +55,4 @@ export class UserComponent implements OnInit {
         console.log(res);
       }, err => console.log(err));
   }
-
-  logout() {
-    this.authService.doLogout()
-      .then((res) => {
-        this.router.navigateByUrl('login');
-      }, (error) => {
-        console.log('Logout error', error);
-      });
-  }
 }

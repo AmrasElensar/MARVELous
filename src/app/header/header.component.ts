@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {MatMenuPanel, MatMenuTrigger} from '@angular/material';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {MatMenu, MatMenuPanel, MatMenuTrigger} from '@angular/material';
 import {Router} from '@angular/router';
 import {UserService} from '../services/user.service';
 
@@ -9,20 +9,15 @@ import {UserService} from '../services/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  currentUser = null;
-
-  constructor(private router: Router, private userService: UserService) {
+  @Input() navMenu: MatMenu;
+  @Output() messageEvent = new EventEmitter<string>();
+  constructor() {
   }
 
   ngOnInit() {
   }
 
-  isLoggedIn = () => {
-    this.userService.getCurrentUser().then(user => this.currentUser = user);
-    return this.currentUser !== null;
-  };
-
-  onHomePage(): boolean {
-    return this.router.url === '/dashboard';
+  showMessage = () => {
+    this.messageEvent.emit('You just clicked the menu...');
   }
 }

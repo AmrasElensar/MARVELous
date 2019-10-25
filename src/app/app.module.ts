@@ -4,7 +4,6 @@ import {CharacterOverviewComponent} from './character-overview/character-overvie
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {MenuModule} from './menu/menu.module';
 import {AppRoutingModule} from './modules/app-routing/app-routing.module';
 import {HeaderComponent} from './header/header.component';
 import {MaterialModule} from './modules/material/material.module';
@@ -45,7 +44,6 @@ import {AuthGuard} from './guards/auth.guard';
   imports: [
     HttpClientModule,
     NgxPaginationModule,
-    MenuModule,
     AppRoutingModule,
     MaterialModule,
     FormsModule,

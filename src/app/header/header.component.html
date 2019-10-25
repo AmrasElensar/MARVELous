@@ -1,12 +1,9 @@
 <mat-toolbar class="header">
   <div class="menu-wrapper">
-    <button class="menu-button" mat-raised-button [matMenuTriggerFor]="navMenu">
+    <button id="menu-button" class="menu-button" mat-raised-button (click)="showMessage()" [matMenuTriggerFor]="navMenu">
     <mat-icon>menu</mat-icon>
       MARVELous
     </button>
-    <mat-menu #navMenu="matMenu">
-      <app-menu></app-menu>
-    </mat-menu>
   </div>
   <img class="header-logo" src="../../assets/images/marvel-logo.png" alt="" [routerLink]="['/']">
 
