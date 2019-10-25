@@ -4,15 +4,15 @@ import {CharacterOverviewComponent} from '../../character-overview/character-ove
 import {DashboardComponent} from '../../dashboard/dashboard.component';
 import {ComicOverviewComponent} from '../../comic-overview/comic-overview.component';
 import {CreatorOverviewComponent} from '../../creator-overview/creator-overview.component';
-import {LoaderComponent} from '../../utilities/loader/loader.component';
+import {AuthorizeGuard} from '../../guards/authorize.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  {path: 'characters', component: CharacterOverviewComponent},
-  {path: 'comics', component: ComicOverviewComponent},
-  {path: 'comics/character/:characterId', component: ComicOverviewComponent},
+  {path: 'characters', component: CharacterOverviewComponent, canActivate: [AuthorizeGuard]},
+  {path: 'comics', component: ComicOverviewComponent,  canActivate: [AuthorizeGuard]},
+  {path: 'comics/character/:characterId', component: ComicOverviewComponent, canActivate: [AuthorizeGuard]},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'creators', component: CreatorOverviewComponent}
+  {path: 'creators', component: CreatorOverviewComponent, canActivate: [AuthorizeGuard] }
 ];
 
 @NgModule({

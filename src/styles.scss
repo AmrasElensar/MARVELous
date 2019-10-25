@@ -113,3 +113,11 @@ body {
   margin: auto 2px auto 0;
 }
 
+.error-snackbar {
+  background-color: $marvel-red;
+  color: white;
+
+  .mat-button-wrapper {
+    color: white
+  }
+}

@@ -9,20 +9,21 @@
     </div>
 
   <div *ngIf="menuVisibility" class="dashboard-block">
-    <div class="dashboard-item" id="character-button"
-         [routerLink]="['/characters']">
-      <p class="button-text">{{'Browse characters' | uppercase}}</p>
-      <mat-icon class="button-icon">person</mat-icon>
-    </div>
-    <div class="dashboard-item" id="comic-button"
-         [routerLink]="['/comics']">
-      <p class="button-text">{{'Browse comics' | uppercase}}</p>
-      <mat-icon class="button-icon">menu_book</mat-icon>
-    </div>
-    <div class="dashboard-item" id="creator-button"
-         [routerLink]="['/creators']">
-      <p class="button-text">{{'Browse creators' | uppercase}}</p>
-      <mat-icon class="button-icon">create</mat-icon>
-    </div>
+    <firebase-ui></firebase-ui>
+<!--    <div class="dashboard-item" id="character-button"-->
+<!--         [routerLink]="['/characters']">-->
+<!--      <p class="button-text">{{'Browse characters' | uppercase}}</p>-->
+<!--      <mat-icon class="button-icon">person</mat-icon>-->
+<!--    </div>-->
+<!--    <div class="dashboard-item" id="comic-button"-->
+<!--         [routerLink]="['/comics']">-->
+<!--      <p class="button-text">{{'Browse comics' | uppercase}}</p>-->
+<!--      <mat-icon class="button-icon">menu_book</mat-icon>-->
+<!--    </div>-->
+<!--    <div class="dashboard-item" id="creator-button"-->
+<!--         [routerLink]="['/creators']">-->
+<!--      <p class="button-text">{{'Browse creators' | uppercase}}</p>-->
+<!--      <mat-icon class="button-icon">create</mat-icon>-->
+<!--    </div>-->
   </div>
 </div>

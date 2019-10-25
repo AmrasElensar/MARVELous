@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "marvelous-marvel",
+    "public": "dist/MARVELous",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
