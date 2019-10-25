@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FirebaseUserModel} from '../models/user.model';
@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location,
     private fb: FormBuilder
   ) {
@@ -36,6 +37,10 @@ export class UserComponent implements OnInit {
         this.createForm(this.user.name);
       }
     });
+
+    setTimeout(() => {
+      this.router.navigate(['dashboard']);
+    }, 5000);
   }
 
   createForm(name) {
@@ -54,7 +59,7 @@ export class UserComponent implements OnInit {
   logout() {
     this.authService.doLogout()
       .then((res) => {
-        this.location.back();
+        this.router.navigateByUrl('login');
       }, (error) => {
         console.log('Logout error', error);
       });

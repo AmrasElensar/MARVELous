@@ -13,11 +13,11 @@ import {UserResolver} from '../../user/user.resolver';
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
-  {path: 'characters', component: CharacterOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'comics', component: ComicOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'comics/character/:characterId', component: ComicOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'creators', component: CreatorOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'characters', component: CharacterOverviewComponent, resolve: {data: UserResolver}},
+  {path: 'comics', component: ComicOverviewComponent, resolve: {data: UserResolver}},
+  {path: 'comics/character/:characterId', component: ComicOverviewComponent, resolve: {data: UserResolver}},
+  {path: 'dashboard', component: DashboardComponent, resolve: {data: UserResolver}},
+  {path: 'creators', component: CreatorOverviewComponent, resolve: {data: UserResolver}},
   {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
   {path: 'user', component: UserComponent, resolve: {data: UserResolver}}
 ];
